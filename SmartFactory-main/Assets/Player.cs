@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour
     public Timer timer;
     float arrivalTime = 0;
     bool isArrived = false;
+    public sensor sensor;
+    
 
     void Start()
     {
@@ -22,6 +25,7 @@ public class Player : MonoBehaviour
 
     void Update() // 프레임이 갱신될 때 실행되는 메서드 0.002 ~ 0.004초에 한번 씩 실행
     {
+
         if (!isArrived)
         {
             Vector3 direction = Vector3.back;
@@ -50,7 +54,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Object"))
         {
-            print(collision.gameObject.name + "에 충돌했습니다.");
+            print(collision.gameObject.name + "드리블 직전");
         }
     }
 
@@ -59,7 +63,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Object"))
         {
-            print(collision.gameObject.name + "에 붙어있습니다.");
+            print(collision.gameObject.name + "드리블 중");
         }
     }
 
@@ -68,7 +72,7 @@ public class Player : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Object"))
         {
-            print(collision.gameObject.name + "에 충돌끝났습니다.");
+            print(collision.gameObject.name + "슛!");
         }
     }
 
@@ -77,6 +81,7 @@ public class Player : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Object"))
         {
             print("OnTriggerEnter");
+            
         }
     }
 }
