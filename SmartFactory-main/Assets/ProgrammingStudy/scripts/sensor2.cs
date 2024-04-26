@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class sensor : MonoBehaviour
+public class sensor2 : MonoBehaviour
 {
     public bool isObjectDetected = false;
 
