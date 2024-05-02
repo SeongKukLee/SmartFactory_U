@@ -18,7 +18,7 @@ public class Cylinder : MonoBehaviour
 
     // 프레임이 갱신될 때 실행되는 메서드 0.002 ~ 0.004초에 한번씩 실행
     void Update()
-    {
+    {/*
         if (sensor.isObjectDetected)
         {
             currentTime += Time.deltaTime;
@@ -45,7 +45,7 @@ public class Cylinder : MonoBehaviour
                     currentTime = 0;
                 }
             }
-        }
+        }*/
     }
 
     // 충돌이 시작되었을 때 실행되는 함수
