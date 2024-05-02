@@ -2,31 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class conveyor : MonoBehaviour
-{
+public class Conveyor : MonoBehaviour 
+{ 
     public float speed = 3;
+    public float resetTime = 10;
+    public float currentTime = 0;
     public GameObject pushObj;
-    public Transform posA;
-    public Transform posB;
-    public Transform posC;
-    // Start is called before the first frame update
-    
+    Vector3 pushObjOriginPos;
+    public AudioClip clip;
+
+    public void Start()
+    {
+        AudioManager.instance.PlayAudioClip(clip);
+
+    }
     public void TurnOnConveyor()
     {
+        pushObjOriginPos = pushObj.transform.localPosition;
         pushObj.SetActive(true);
 
         StartCoroutine(CoMovePushObject());
-        // 1. PosA 에서 PosB 까지 이동
-        // 2. 금속이라면,배출 실린더 n초 후 On
-        // 3. 그렇지 않다면 Pos C까지 이동
-
     }
 
     IEnumerator CoMovePushObject()
     {
         while (true)
         {
+            currentTime += Time.deltaTime;
+            
+            if (currentTime > resetTime)
+            {
+                currentTime = 0;
+                pushObj.transform.localPosition = pushObjOriginPos;
+                // pushObj.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                break;
+            }
+
             pushObj.transform.position += (-transform.forward) * Time.deltaTime * speed;
+
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
