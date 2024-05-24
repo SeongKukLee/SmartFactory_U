@@ -77,4 +77,10 @@ public class grabcylinder : MonoBehaviour
         isgrabmoving = false;
 
     }
+
+    public void OnGrabBtnClkEvent()
+    {
+        StartCoroutine(CoMoveGrab1(maxRange1, minRange1, time));
+        StartCoroutine(CoMoveGrab2(maxRange2, minRange2, time));
+    }
 }

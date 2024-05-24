@@ -31,13 +31,13 @@ public class Cylinder : MonoBehaviour
         Vector3 originPos = new Vector3(cylinderRod.localPosition.x, minRange, cylinderRod.localPosition.z); //현재 위치 받아옴
         Vector3 targetPos = new Vector3(cylinderRod.localPosition.x, maxRange, cylinderRod.localPosition.z); //최종 위치 받아옴
         
-        // time동안 pistonRod를 originPos에서 targetPos로 이동
+    
         while (true)
         {
             currentTime += Time.deltaTime;
-            if (currentTime > time) // 현재 시간이 내가 지정한 time 보다 커질때 
+            if (currentTime > time)
             {
-                currentTime = 0; // 현재 시간 초기화
+                currentTime = 0;
                 break;
             }
             Vector3 newPos = Vector3.Lerp(originPos, targetPos, currentTime / time); //newPos에 originPos에서 targetPos로 time 동안 이동하는 값 저장.  

@@ -38,20 +38,21 @@ public class IceCreamSensor : MonoBehaviour
     {
         if (other.gameObject.name.Contains("Icecream"))
         {
+            
             if (isEndSensor)
             {
                 led.material.color = Color.white;
+                IceMxComponent.instance.SetDevice(plcAddress, 1);
                 //Sensor B
-                other.transform.position = originPos;
+                /*other.transform.position = originPos;
                 Rigidbody rb = other.transform.GetComponent<Rigidbody>();
                 rb.velocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
 
-                return;
+                return;*/
             }
 
-            // Sensor A
-            IceMxComponent.instance.SetDevice(plcAddress, 1);
+            
         }
     }
 }
